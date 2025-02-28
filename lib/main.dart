@@ -14,10 +14,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF5B7867),
+          brightness: Brightness.light,
+        ).copyWith(
+          primary: const Color(0xFF5B7867), // Verde acinzentado
+          onPrimary: Colors.white, // Texto em cima do primary
+          secondary: const Color(0xFF888888), // Cinza Médio
+          onSecondary: Colors.white, // Texto em cima do secondary
+          background: const Color(0xFFF2F2F2), // Cinza Claro
+          onBackground: const Color(0xFF333333), // Texto em fundos claros
+          surface: Colors.white, // Branco para fundos principais
+          onSurface: const Color(0xFF333333), 
+        ),
       ),
       home: ProductsOverviewPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
