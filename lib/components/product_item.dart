@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop/pages/product_detail_page.dart';
+import 'package:shop/utils/app_routes.dart';
 import '../models/product.dart';
 
 class ProductItem extends StatelessWidget {
@@ -29,9 +31,20 @@ class ProductItem extends StatelessWidget {
             ),
           ),
         ),
-        child: Image.network(
-          product.imageUrl,
-          fit: BoxFit.cover,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              AppRoutes.PRODUCT_DETAIL,
+              arguments: product,
+            );
+          },
+          child: Hero(
+            tag: product.id,
+            child: Image.network(
+              product.imageUrl,
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
       ),
     );
