@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop/components/appbar_default.dart';
 import 'package:shop/components/cart_item.dart';
 import 'package:shop/models/cart.dart';
+import 'package:shop/models/order_list.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -59,7 +60,12 @@ class CartPage extends StatelessWidget {
                       // Botão de compra
                       ElevatedButton(
                         onPressed: () {
-                          // Ação do botão de compra
+                          Provider.of<OrderList>(
+                            context,
+                            listen: false,
+                          ).addOrder(cart);
+
+                          cart.clear();
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
