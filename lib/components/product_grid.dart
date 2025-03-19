@@ -10,20 +10,23 @@ class ProductGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ProductList>(context);
-    final List<Product> loadedProducts = showFavoriteOnly ? provider.favoriteItems : provider.items;
+    final List<Product> loadedProducts =
+        showFavoriteOnly ? provider.favoriteItems : provider.items;
 
-    return GridView.builder(
-      padding: const EdgeInsets.all(8.0),
-      itemCount: loadedProducts.length,
-      itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-        value: loadedProducts[i],
-        child: ProductItem(),
-      ),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
-        childAspectRatio: 3 / 2,
+    return Padding(
+      padding: const EdgeInsets.all(16.0), // margem externa em torno da lista
+      child: GridView.builder(
+        itemCount: loadedProducts.length,
+        itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+          value: loadedProducts[i],
+          child: ProductItem(),
+        ),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+          childAspectRatio: 3 / 2,
+        ),
       ),
     );
   }

@@ -4,6 +4,7 @@ class CartItem {
   final String name;
   final int quantify;
   final double price;
+  final String imageUrl;
 
   CartItem({
     required this.id,
@@ -11,6 +12,7 @@ class CartItem {
     required this.name,
     required this.quantify,
     required this.price,
+    required this.imageUrl,
   });
 
 }

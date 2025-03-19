@@ -35,7 +35,6 @@ class ProductItem extends StatelessWidget {
           trailing: IconButton(
             onPressed: () {
               cart.addItem(product);
-              print(cart.intemsCount);
             },
             icon: const Icon(
               Icons.shopping_cart,

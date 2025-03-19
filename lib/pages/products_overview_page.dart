@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop/components/badge_default.dart';
 import 'package:shop/components/product_grid.dart';
 import 'package:shop/models/cart.dart';
+import 'package:shop/utils/app_routes.dart';
 
 enum FilterOptions {
   all,
@@ -20,7 +21,6 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
   bool _showFavoriteOnly = false;
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<Cart>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -56,7 +56,9 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
           ),
           Consumer<Cart>(
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(AppRoutes.CART);
+              },
               icon: Icon(
                 Icons.shopping_cart,
                 color: Colors.white,

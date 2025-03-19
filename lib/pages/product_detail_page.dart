@@ -7,16 +7,25 @@ class ProductDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  final Product product = ModalRoute.of(context)!.settings.arguments as Product;
+    final Product product =
+        ModalRoute.of(context)!.settings.arguments as Product;
     return Scaffold(
       appBar: AppbarDefault(title: product.name),
-      body: Center(
-        child: Hero(
-          tag: product.id,
-          child: Image.network(
-            product.imageUrl,
-            fit: BoxFit.cover,
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              width: double.infinity,
+              child: Hero(
+                tag: product.id,
+                child: Image.network(
+                  product.imageUrl,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
