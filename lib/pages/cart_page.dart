@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/components/app_drawer.dart';
 import 'package:shop/components/appbar_default.dart';
 import 'package:shop/components/cart_item.dart';
 import 'package:shop/models/cart.dart';
@@ -15,6 +16,7 @@ class CartPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppbarDefault(title: 'Carrinho'),
+      drawer: AppDrawer(),
       body: Container(
         // Exemplo de cor de fundo sutil (opcional)
         color: Colors.grey.shade100,

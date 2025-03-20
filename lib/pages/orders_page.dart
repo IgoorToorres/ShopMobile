@@ -12,27 +12,7 @@ class OrdersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final OrderList orders = Provider.of(context);
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: Builder(
-          builder: (context) => IconButton(
-            onPressed: () => Scaffold.of(context).openDrawer(),
-            icon: Icon(
-              Icons.menu,
-              color: Colors.white,
-            ),
-          ),
-        ),
-        title: Text(
-          'Meus Pedidos',
-          style: TextStyle(
-            fontSize: 25,
-            color: Theme.of(context).colorScheme.onPrimary,
-          ),
-        ),
-        backgroundColor: Theme.of(context).primaryColor,
-        centerTitle: true,
-      ),
+      appBar: AppbarDefault(title: 'Meus Pedidos'),
       drawer: AppDrawer(),
       body: ListView.builder(
         itemCount: orders.itemsCount,

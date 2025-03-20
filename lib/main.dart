@@ -6,7 +6,9 @@ import 'package:shop/models/product_list.dart';
 import 'package:shop/pages/cart_page.dart';
 import 'package:shop/pages/orders_page.dart';
 import 'package:shop/pages/product_detail_page.dart';
+import 'package:shop/pages/product_form_page.dart';
 import 'package:shop/pages/products_overview_page.dart';
+import 'package:shop/pages/products_page.dart';
 import 'package:shop/utils/app_routes.dart';
 
 void main() {
@@ -44,10 +46,7 @@ class MyApp extends StatelessWidget {
             onPrimary: Colors.white, // Texto em cima do primary
             secondary: const Color(0xFF888888), // Cinza Médio
             onSecondary: Colors.white, // Texto em cima do secondary
-            background: const Color(0xFFF2F2F2), // Cinza Claro
-            onBackground: const Color(0xFF333333), // Texto em fundos claros
             surface: Colors.white, // Branco para fundos principais
-            onSurface: const Color(0xFF333333), 
           ),
         ),
         // home: ProductsOverviewPage(),
@@ -56,6 +55,8 @@ class MyApp extends StatelessWidget {
           AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailPage(),
           AppRoutes.CART: (ctx) => CartPage(),
           AppRoutes.ORDERS: (ctx) => OrdersPage(),
+          AppRoutes.PRODUCTS: (ctx) => ProductsPage(),
+          AppRoutes.PRODUCT_FORM: (ctx) => ProductFormPage(),
         },
         debugShowCheckedModeBanner: false,
       ),
