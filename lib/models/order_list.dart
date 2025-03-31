@@ -6,7 +6,7 @@ import 'package:shop/models/order.dart';
 import 'package:shop/utils/constants.dart';
 
 class OrderList with ChangeNotifier {
-  List<Order> _items = [];
+  final List<Order> _items = [];
 
   List<Order> get items {
     return [..._items];
@@ -14,6 +14,26 @@ class OrderList with ChangeNotifier {
 
   int get itemsCount {
     return _items.length;
+  }
+
+  Future<void> loadOrders() async {
+    _items.clear();
+    final response =
+        await http.get(Uri.parse('${Constants.ORDER_BASEURL}.json'));
+    if (response.body == 'null') return;
+    Map<String, dynamic> data = jsonDecode(response.body);
+    data.forEach(
+      (orderID, orderData) {
+        _items.add(
+          Order(
+            id: orderID,
+            total: orderData['total'],
+            products: orderData['products'],
+            date: orderData['date'],
+          ),
+        );
+      },
+    );
   }
 
   Future<void> addOrder(Cart cart) async {
