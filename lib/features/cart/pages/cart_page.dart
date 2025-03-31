@@ -4,7 +4,6 @@ import 'package:shop/components/app_drawer.dart';
 import 'package:shop/components/appbar_default.dart';
 import 'package:shop/features/cart/components/cart_item.dart';
 import 'package:shop/models/cart/provider/cart_provider.dart';
-import 'package:shop/models/order/provider/order_provider.dart';
 import 'package:shop/features/cart/components/cart_button.dart';
 
 class CartPage extends StatelessWidget {
