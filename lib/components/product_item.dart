@@ -10,6 +10,7 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final msg = ScaffoldMessenger.of(context);
     return ListTile(
       leading: CircleAvatar(
         radius: 28,
@@ -41,22 +42,33 @@ class ProductItem extends StatelessWidget {
                     content: Text('Quer mesmo remover este item?'),
                     actions: [
                       TextButton(
-                        onPressed: () => Navigator.of(ctx).pop(),
+                        onPressed: () => Navigator.of(ctx).pop(false),
                         child: Text('Não'),
                       ),
                       TextButton(
                         onPressed: () {
-                          Provider.of<ProductList>(
-                            context,
-                            listen: false,
-                          ).deleteProduct(product);
-                          Navigator.of(ctx).pop();
+                          Navigator.of(ctx).pop(true);
                         },
                         child: Text('Sim'),
                       ),
                     ],
                   ),
-                );
+                ).then((value) async {
+                  if (value ?? false) {
+                    try {
+                      await Provider.of<ProductList>(
+                        context,
+                        listen: false,
+                      ).deleteProduct(product);
+                    } catch (error) {
+                      msg.showSnackBar(
+                        SnackBar(
+                          content: Text(error.toString()),
+                        ),
+                      );
+                    }
+                  }
+                });
               },
               icon: Icon(
                 Icons.delete,
