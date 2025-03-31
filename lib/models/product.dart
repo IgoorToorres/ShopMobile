@@ -25,7 +25,7 @@ class Product with ChangeNotifier {
     notifyListeners();
 
     final response = await http.patch(
-      Uri.parse('${Constants.PRODUCTS_BASEURL}/$id.json'),
+      Uri.parse('${Constants.PRODUCT_BASEURL}/$id.json'),
       body: jsonEncode({"isFavorite": isFavorite}),
     );
 
