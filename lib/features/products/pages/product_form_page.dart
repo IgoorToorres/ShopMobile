@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop/models/product.dart';
-import 'package:shop/models/product_list.dart';
+import 'package:shop/models/product/product.dart';
+import 'package:shop/models/product/provider/product_provider.dart';
 
 class ProductFormPage extends StatefulWidget {
   const ProductFormPage({super.key});
