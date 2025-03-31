@@ -7,16 +7,6 @@ class AppbarDefault extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
-      leading: Builder(
-        builder: (context) => IconButton(
-          onPressed: () => Scaffold.of(context).openDrawer(),
-          icon: Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-        ),
-      ),
       title: Text(
         title,
         style: TextStyle(

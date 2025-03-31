@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop/models/product.dart';
+import 'package:shop/models/product_list.dart';
 
 class ProductFormPage extends StatefulWidget {
   const ProductFormPage({super.key});
@@ -55,17 +57,30 @@ class _ProductFormPageState extends State<ProductFormPage> {
 
     _formKey.currentState?.save();
 
-    final newProduct = Product(
-      id: Random().nextDouble().toString(),
-      name: _formData['name'] as String,
-      description: _formData['description'] as String,
-      price: _formData['price'] as double,
-      imageUrl: _formData['imageUrl'] as String,
-    );
+    Provider.of<ProductList>(
+      context,
+      listen: false,
+    ).saveProduct(_formData);
+    Navigator.of(context).pop();
+  }
 
-    print(newProduct.name);
-    print(newProduct.price);
-    print(newProduct.description);
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if(_formData.isEmpty){
+      final arg = ModalRoute.of(context)?.settings.arguments;
+
+      if(arg != null){
+        final product = arg as Product;
+        _formData['id'] = product.id;
+        _formData['name'] = product.name;
+        _formData['price'] = product.price;
+        _formData['description'] = product.description;
+        _formData['imageUrl'] = product.imageUrl;
+        _imageUrlController.text = product.imageUrl;
+      }
+    }
   }
 
   @override
@@ -91,6 +106,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
               children: [
                 // Campo Nome
                 TextFormField(
+                  initialValue: _formData['name']?.toString(),
                   decoration: InputDecoration(
                     labelText: 'Nome',
                     border: OutlineInputBorder(
@@ -121,6 +137,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
+                  initialValue: _formData['price']?.toString(),
                   decoration: InputDecoration(
                     labelText: 'Preço',
                     border: OutlineInputBorder(
@@ -134,14 +151,14 @@ class _ProductFormPageState extends State<ProductFormPage> {
                   onFieldSubmitted: (_) {
                     FocusScope.of(context).requestFocus(_descriptionFocus);
                   },
-                  validator: (priceInput){
+                  validator: (priceInput) {
                     final priceString = priceInput ?? '';
                     final price = double.tryParse(priceString) ?? -1;
 
-                    if(price <= 0){
+                    if (price <= 0) {
                       return 'valor deve ser maior que 0';
                     }
-                    
+
                     return null;
                   },
                   onSaved: (price) =>
@@ -149,6 +166,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
+                  initialValue: _formData['description']?.toString(),
                   decoration: InputDecoration(
                     labelText: 'Descrição',
                     border: OutlineInputBorder(
@@ -158,17 +176,17 @@ class _ProductFormPageState extends State<ProductFormPage> {
                   focusNode: _descriptionFocus,
                   keyboardType: TextInputType.multiline,
                   maxLines: 3,
-                  validator: (descriptionInput){
+                  validator: (descriptionInput) {
                     final description = descriptionInput ?? '';
 
-                    if(description.trim().isEmpty){
+                    if (description.trim().isEmpty) {
                       return 'O campo descrição é obrigatório';
                     }
 
-                    if(description.trim().length < 5){
+                    if (description.trim().length < 5) {
                       return 'Descrição muito curta!';
                     }
-                    
+
                     return null;
                   },
                   onSaved: (description) =>
@@ -193,8 +211,8 @@ class _ProductFormPageState extends State<ProductFormPage> {
                         onFieldSubmitted: (_) => _submitForm(),
                         validator: (imageUrlInput) {
                           final imageUrl = imageUrlInput ?? '';
-                          
-                          if(!isValidImageUrl(imageUrl)){
+
+                          if (!isValidImageUrl(imageUrl)) {
                             return 'Url invalida';
                           }
                           return null;
