@@ -1,8 +1,6 @@
 class AppRoutes{
   // ignore: constant_identifier_names
-  static const AUTH = '/';
-  // ignore: constant_identifier_names
-  static const HOME = '/home';
+  static const AUTH_OR_HOME = '/';
   // ignore: constant_identifier_names
   static const PRODUCT_DETAIL = '/product-detail';
   // ignore: constant_identifier_names

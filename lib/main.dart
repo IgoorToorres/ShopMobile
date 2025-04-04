@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop/features/auth/pages/auth_login_page.dart';
+import 'package:shop/features/auth/pages/auth_or_home_page.dart';
 import 'package:shop/models/auth/provider/auth.dart';
 import 'package:shop/models/cart/provider/cart_provider.dart';
 import 'package:shop/models/order/provider/order_provider.dart';
@@ -9,7 +9,6 @@ import 'package:shop/features/cart/pages/cart_page.dart';
 import 'package:shop/features/order/pages/orders_page.dart';
 import 'package:shop/features/product_info/pages/product_detail_page.dart';
 import 'package:shop/features/products/pages/product_form_page.dart';
-import 'package:shop/features/home/pages/products_overview_page.dart';
 import 'package:shop/features/products/pages/products_page.dart';
 import 'package:shop/utils/app_routes.dart';
 
@@ -25,16 +24,20 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ProductList(),
+          create: (_) => Auth(),
+        ),
+        ChangeNotifierProxyProvider<Auth, ProductList>(
+          create: (_) => ProductList('', []),
+          update: (ctx, auth, previous){
+            return ProductList(auth.token ?? '', previous?.items ?? []);
+          },
+          
         ),
         ChangeNotifierProvider(
           create: (_) => Cart(),
         ),
         ChangeNotifierProvider(
           create: (_) => OrderList(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Auth(),
         ),
       ],
       child: MaterialApp(
@@ -55,8 +58,7 @@ class MyApp extends StatelessWidget {
         ),
         // home: ProductsOverviewPage(),
         routes: {
-          AppRoutes.AUTH: (ctx) => AuthLoginPage(),
-          AppRoutes.HOME: (ctx) => ProductsOverviewPage(),
+          AppRoutes.AUTH_OR_HOME: (ctx) => AuthOrHomePage(),
           AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailPage(),
           AppRoutes.CART: (ctx) => CartPage(),
           AppRoutes.ORDERS: (ctx) => OrdersPage(),
