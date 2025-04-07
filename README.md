@@ -1,16 +1,12 @@
 # shop
 
-A new Flutter project.
+Este projeto é um aplicativo móvel de loja de produtos, desenvolvido em Flutter e integrado ao Firebase para gerenciamento de dados. Com ele, usuários podem cadastrar novos produtos informando a URL da imagem, o nome e o preço, e visualizar todos os itens cadastrados em uma lista pública. Além disso, o aplicativo oferece recursos de perfil de usuário, permitindo favoritar produtos, consultar histórico de compras e ajustar preferências pessoais.
 
-## Getting Started
+Funcionalidades
+Cadastro de produtos: permite adicionar novos produtos informando a URL da imagem, o nome e o preço.
+Listagem pública: exibe todos os produtos cadastrados em uma lista pública, acessível a qualquer usuário.
+Perfil do usuário: possibilita criar uma conta de usuário para favoritar produtos, consultar histórico de compras e ajustar preferências pessoais.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Tecnologias utilizadas
+Flutter: framework de desenvolvimento mobile multiplataforma utilizado para construir a interface e lógica do aplicativo (Android e iOS).
+Firebase: plataforma em nuvem do Google utilizada no back-end, incluindo banco de dados de produtos e autenticação de usuários.
