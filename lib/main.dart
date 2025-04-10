@@ -56,14 +56,27 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Lato',
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color(0xFF5B7867),
+            seedColor: const Color(0xFF3A6351), // Verde escuro elegante
             brightness: Brightness.light,
           ).copyWith(
-            primary: const Color(0xFF5B7867), // Verde acinzentado
-            onPrimary: Colors.white, // Texto em cima do primary
-            secondary: const Color(0xFF888888), // Cinza Médio
-            onSecondary: Colors.white, // Texto em cima do secondary
-            surface: Colors.white, // Branco para fundos principais
+            primary: const Color(0xFF3A6351),
+            onPrimary: Colors.white,
+            secondary: const Color(0xFF8AB6A5),
+            onSecondary: Colors.black,
+            surface: const Color(0xFFF8F8F8),
+            background: const Color(0xFFF1F1F1),
+            error: Colors.redAccent,
+          ),
+          scaffoldBackgroundColor: const Color(0xFFF1F1F1),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xFF3A6351),
+            foregroundColor: Colors.white,
+            elevation: 2,
+            centerTitle: true,
+          ),
+          snackBarTheme: const SnackBarThemeData(
+            backgroundColor: Colors.black87,
+            contentTextStyle: TextStyle(color: Colors.white),
           ),
         ),
         // home: ProductsOverviewPage(),

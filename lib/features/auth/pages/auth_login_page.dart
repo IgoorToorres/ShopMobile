@@ -18,23 +18,28 @@ class AuthLoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  margin: EdgeInsets.only(bottom: 20),
-                  padding: EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 70,
-                  ),
-                  transform: Matrix4.rotationZ(-8 * pi / 180)..translate(-10.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.deepOrange.shade900,
-                  ),
-                  child: Text(
-                    'Minha Loja',
-                    style: TextStyle(
-                      fontSize: 45,
-                      fontFamily: 'Anton',
-                      color: Colors.white,
+                Center(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 20),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 70,
+                      ),
+                      transform: Matrix4.rotationZ(-8 * pi / 180)
+                        ..translate(-10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.deepOrange.shade900,
+                      ),
+                      child: Text(
+                        'Minha Loja',
+                        style: TextStyle(
+                          fontSize: 45,
+                          fontFamily: 'Anton',
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
                 ),
