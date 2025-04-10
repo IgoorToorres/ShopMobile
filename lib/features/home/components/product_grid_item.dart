@@ -50,8 +50,9 @@ class ProductGridItem extends StatelessWidget {
                   ),
                   child: Hero(
                     tag: product.id,
-                    child: Image.network(
-                      product.imageUrl,
+                    child: FadeInImage(
+                      placeholder: AssetImage('assets/images/product-placeholder.png'),
+                      image: NetworkImage(product.imageUrl),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -60,15 +61,17 @@ class ProductGridItem extends StatelessWidget {
 
               // Nome + botão de favorito
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Row(
                   children: [
                     Flexible(
                       child: Text(
                         product.name,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w600,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                ),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -99,7 +102,8 @@ class ProductGridItem extends StatelessWidget {
 
               // Botão "Adicionar ao carrinho"
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
@@ -129,7 +133,10 @@ class ProductGridItem extends StatelessWidget {
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Adicionar ao carrinho', style: TextStyle(fontSize: 15),),
+                      Text(
+                        'Adicionar ao carrinho',
+                        style: TextStyle(fontSize: 15),
+                      ),
                     ],
                   ),
                 ),
