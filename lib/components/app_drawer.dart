@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/features/order/pages/orders_page.dart';
 import 'package:shop/models/auth/provider/auth.dart';
 import 'package:shop/utils/app_routes.dart';
+import 'package:shop/utils/custom_page_transition.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -10,13 +12,13 @@ class AppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        padding: EdgeInsets.zero, 
+        padding: EdgeInsets.zero,
         children: [
           SizedBox(
             height: 120,
             child: DrawerHeader(
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor, 
+                color: Theme.of(context).primaryColor,
               ),
               child: Align(
                 alignment: Alignment.bottomLeft,
@@ -60,7 +62,8 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Sair'),
             onTap: () {
               Provider.of<Auth>(context, listen: false).logOut();
-              Navigator.of(context).pushReplacementNamed(AppRoutes.AUTH_OR_HOME);
+              Navigator.of(context)
+                  .pushReplacementNamed(AppRoutes.AUTH_OR_HOME);
             },
           ),
         ],
